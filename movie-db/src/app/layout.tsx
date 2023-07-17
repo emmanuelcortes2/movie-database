@@ -2,7 +2,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from '@/components/navbar'
-import MovieCard from './page'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {/* {children} */}
+      <body className="font-sans bg-gradient-to-r from-blue-950 to-blue-500">
         <NavBar />
-        <MovieCard />
+        {children}
       </body>
     </html>
   )

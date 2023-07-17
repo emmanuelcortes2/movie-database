@@ -1,4 +1,0 @@
-type Movie = {
-    title: string
-    
-}
