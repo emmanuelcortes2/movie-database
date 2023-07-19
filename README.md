@@ -1,2 +1,1 @@
-# movie-database
-A web app to list and show movies
+This is a project built with The movie DataBase & NextJS
