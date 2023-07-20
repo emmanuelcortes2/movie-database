@@ -21,7 +21,7 @@ export default function Popular({
         <title>Popular</title>
       </Head>
       <section className="">
-        <h2>Popular</h2>
+        <h2 className="text-3xl font-bold subpixel-antialiased tracking-wider pl-4 mt-4 text-slate-700">Popular</h2>
       </section>
       <MovieGrid moviesData={popularMoviesData} />
     </Layout>

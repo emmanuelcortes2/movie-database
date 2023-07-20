@@ -72,8 +72,8 @@ export default function Layout({
         )}
       </header>
       {!home && (
-        <div className="ml-4">
-          <Link href="/">← Back to home</Link>
+        <div className="ml-4 mt-4">
+          <Link href="/" className="pl-4 pt-4">← Back to home</Link>
         </div>
       )}
       <main>

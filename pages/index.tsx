@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
+import Layout from "../components/layout";
 import { GetStaticProps } from "next";
 import MovieGrid from "../components/movie-grid";
 
@@ -21,9 +21,9 @@ export default function Home({
         <title>Home</title>
       </Head>
       <section className="">
-        <p className="">
-          Checkout the latest movies releases
-        </p>
+        <h2 className="text-3xl font-bold subpixel-antialiased tracking-wider pl-4 mt-4 text-slate-700">
+          Latest movies releases
+        </h2>
       </section>
       <MovieGrid moviesData={allMoviesData}/>
     </Layout>

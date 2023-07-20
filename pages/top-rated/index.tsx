@@ -21,7 +21,7 @@ export default function TopRated({
         <title>Top Rated</title>
       </Head>
       <section className="">
-        <h2>Top Rated</h2>
+        <h2 className="text-3xl font-bold subpixel-antialiased tracking-wider pl-4 mt-4 text-slate-700">Top Rated</h2>
       </section>
       <MovieGrid moviesData={topRatedData} />
     </Layout>
