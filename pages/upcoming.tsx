@@ -5,10 +5,10 @@ import Date from "../components/date";
 import { GetStaticProps } from "next";
 import MovieGrid from "../components/movie-grid";
 
-export default function Home({
-  allMoviesData,
+export default function Upcoming({
+  upcomingMoviesData,
 }: {
-  allMoviesData: {
+  upcomingMoviesData: {
     results: {
       release_date: string;
       title: string;
@@ -23,11 +23,9 @@ export default function Home({
         <title>{siteTitle}</title>
       </Head>
       <section className="">
-        {/* <p className="">
-          Checkout the latest movies releases{" "}
-        </p> */}
+       <h2>Upcoming</h2>
       </section>
-      <MovieGrid moviesData={allMoviesData}/>
+      <MovieGrid moviesData={upcomingMoviesData}/>
     </Layout>
   );
 }
@@ -43,13 +41,13 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=f1d951a886af6d1ecdc8225b592155f9",
+    "https://api.themoviedb.org/3/movie/upcoming?api_key=f1d951a886af6d1ecdc8225b592155f9",
     options
   );
-  const allMoviesData = await res.json();
+  const upcomingMoviesData = await res.json();
   return {
     props: {
-      allMoviesData,
+      upcomingMoviesData,
     },
   };
 };

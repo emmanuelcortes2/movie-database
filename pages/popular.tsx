@@ -3,9 +3,8 @@ import Layout, { siteTitle } from "../components/layout";
 import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
-import MovieGrid from "../components/movie-grid";
 
-export default function Home({
+export default function Popular({
   allMoviesData,
 }: {
   allMoviesData: {
@@ -23,11 +22,25 @@ export default function Home({
         <title>{siteTitle}</title>
       </Head>
       <section className="">
-        {/* <p className="">
-          Checkout the latest movies releases{" "}
-        </p> */}
+        <h2>Popular</h2>
       </section>
-      <MovieGrid moviesData={allMoviesData}/>
+      <section className="grid grid-cols-7 p-2">
+        {allMoviesData.results.map(
+          ({ id, release_date, title, poster_path }) => (
+            <Link href="/movies/[id]" as={`/movies/${id}`}>
+              <div className="flex flex-col h-80 w-46 justify-center items-center cursor-pointer">
+                <p className="mb-4 p-2 text-center text-sm font-semibold">
+                  {title}
+                </p>
+                <img src={"https://image.tmdb.org/t/p/w500" + poster_path}  className="h-40 rounded-md shadow-lg shadow-blue-700/50"/>
+                <p className="text-left text-sm mt-4" key={id}>
+                  <Date dateString={release_date} />
+                </p>
+              </div>
+            </Link>
+          )
+        )}
+      </section>
     </Layout>
   );
 }
@@ -43,7 +56,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=f1d951a886af6d1ecdc8225b592155f9",
+    "https://api.themoviedb.org/3/movie/popular?api_key=f1d951a886af6d1ecdc8225b592155f9",
     options
   );
   const allMoviesData = await res.json();
