@@ -6,7 +6,7 @@ export default function MovieGrid({ moviesData }) {
     <>
       <section className="grid grid-cols-7 p-2">
         {moviesData.results.map(({ id, release_date, title, poster_path }) => (
-          <Link href="/movies/[id]" as={`/movies/${id}`}>
+          <Link href={`/movies/${id}`} key={id}>
             <div className="flex flex-col h-80 w-46 justify-center items-center cursor-pointer">
               <p className="mb-4 p-2 text-center text-sm font-semibold">
                 {title}

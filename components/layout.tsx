@@ -1,16 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
-const name = 'The Movie DB'
-export const siteTitle = 'The Movie DB'
+const name = "The Movie DB";
+export const siteTitle = "The Movie DB";
 
-export default function Layout({ 
-  children, 
-  home }: {
-    children: React.ReactNode,
-    home?: boolean
-  }) {
+export default function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+}) {
   return (
     <div className="">
       <Head>
@@ -24,18 +25,35 @@ export default function Layout({
       <header className="flex justify-left bg-[#032541]">
         {home ? (
           <>
-            <Image
-              priority
-              src="/images/blue_long.svg"
-              height={144}
-              width={400}
-              alt={name}
-              className='m-4'
-            />
-            <ul className='flex text-lg font-bold ml-8 text-white justify-center items-center gap-4'>
-              <li key={'1'} className='cursor-pointer hover:underline hover:text-xl target:underline'><Link href={'/upcoming'}>Upcoming</Link></li>
-              <li key={'2'} className='cursor-pointer hover:underline hover:text-xl'><Link href={'/popular'}>Popular</Link></li>
-              <li key={'3'} className='cursor-pointer hover:underline hover:text-xl'><Link href={'/top-rated'}>Top Rated</Link></li>
+            <Link href={"/"}>
+              <Image
+                priority
+                src="/images/blue_long.svg"
+                height={144}
+                width={400}
+                alt={name}
+                className="m-4"
+              />
+            </Link>
+            <ul className="flex text-lg font-bold ml-8 text-white justify-center items-center gap-4">
+              <li
+                key={"1"}
+                className="cursor-pointer hover:underline hover:text-xl target:underline"
+              >
+                <Link href={"/upcoming"}>Upcoming</Link>
+              </li>
+              <li
+                key={"2"}
+                className="cursor-pointer hover:underline hover:text-xl"
+              >
+                <Link href={"/popular"}>Popular</Link>
+              </li>
+              <li
+                key={"3"}
+                className="cursor-pointer hover:underline hover:text-xl"
+              >
+                <Link href={"/top-rated"}>Top Rated</Link>
+              </li>
             </ul>
           </>
         ) : (
@@ -47,7 +65,7 @@ export default function Layout({
                 height={108}
                 width={108}
                 alt={name}
-                className='m-4'
+                className="m-4"
               />
             </Link>
           </>
@@ -58,7 +76,9 @@ export default function Layout({
           <Link href="/">← Back to home</Link>
         </div>
       )}
-      <main>{children}</main>
+      <main>
+        {children}
+      </main>
     </div>
-  )
+  );
 }

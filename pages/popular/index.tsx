@@ -1,12 +1,12 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
+import Layout from "../../components/layout";
 import { GetStaticProps } from "next";
-import MovieGrid from "../components/movie-grid";
+import MovieGrid from "../../components/movie-grid";
 
-export default function Home({
-  allMoviesData,
+export default function Popular({
+  popularMoviesData,
 }: {
-  allMoviesData: {
+  popularMoviesData: {
     results: {
       release_date: string;
       title: string;
@@ -18,14 +18,12 @@ export default function Home({
   return (
     <Layout home>
       <Head>
-        <title>Home</title>
+        <title>Popular</title>
       </Head>
       <section className="">
-        <p className="">
-          Checkout the latest movies releases
-        </p>
+        <h2>Popular</h2>
       </section>
-      <MovieGrid moviesData={allMoviesData}/>
+      <MovieGrid moviesData={popularMoviesData} />
     </Layout>
   );
 }
@@ -41,13 +39,13 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=f1d951a886af6d1ecdc8225b592155f9",
+    "https://api.themoviedb.org/3/movie/popular?api_key=f1d951a886af6d1ecdc8225b592155f9",
     options
   );
-  const allMoviesData = await res.json();
+  const popularMoviesData = await res.json();
   return {
     props: {
-      allMoviesData,
+      popularMoviesData,
     },
   };
 };

@@ -1,14 +1,12 @@
 import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
-import Link from "next/link";
-import Date from "../components/date";
+import Layout from "../../components/layout";
 import { GetStaticProps } from "next";
-import MovieGrid from "../components/movie-grid";
+import MovieGrid from "../../components/movie-grid";
 
-export default function Upcoming({
-  upcomingMoviesData,
+export default function TopRated({
+  topRatedData,
 }: {
-  upcomingMoviesData: {
+  topRatedData: {
     results: {
       release_date: string;
       title: string;
@@ -20,12 +18,12 @@ export default function Upcoming({
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Top Rated</title>
       </Head>
       <section className="">
-       <h2>Upcoming</h2>
+        <h2>Top Rated</h2>
       </section>
-      <MovieGrid moviesData={upcomingMoviesData}/>
+      <MovieGrid moviesData={topRatedData} />
     </Layout>
   );
 }
@@ -41,13 +39,13 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 
   const res = await fetch(
-    "https://api.themoviedb.org/3/movie/upcoming?api_key=f1d951a886af6d1ecdc8225b592155f9",
+    "https://api.themoviedb.org/3/movie/top_rated?api_key=f1d951a886af6d1ecdc8225b592155f9",
     options
   );
-  const upcomingMoviesData = await res.json();
+  const topRatedData = await res.json();
   return {
     props: {
-      upcomingMoviesData,
+      topRatedData,
     },
   };
 };

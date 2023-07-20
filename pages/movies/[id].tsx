@@ -1,8 +1,6 @@
 import Layout from "../../components/layout";
 import Head from "next/head";
-// import Date from "../../components/date";
 import { GetStaticPaths, GetStaticProps } from "next";
-// import Link from "next/link";
 
 export default function Post({
   movieData,
@@ -88,11 +86,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
     "https://api.themoviedb.org/3/movie/now_playing?api_key=f1d951a886af6d1ecdc8225b592155f9",
     options
   );
-  const paths = [];
+  const paths: any[] = [];
   const data = await res.json();
 
   data.results.map((movie) => {
-    paths.push({ params: { id: movie.id.toString() } });
+    return paths.push({ params: { id: movie.id.toString() } });
   });
 
   return {
@@ -101,7 +99,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context: any) => {
   const options = {
     method: "GET",
     headers: {
